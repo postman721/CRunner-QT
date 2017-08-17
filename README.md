@@ -8,7 +8,7 @@ _________________
 
 _______________
 
-CRunner-QT is a lightweight program launcher done with C++ and QT5. It accepts programs or programs with arguments as parameters. The program knows how to handle errors and prints an error message for user if execution fails(meaning program xyz does not exist.
+CRunner-QT is a lightweight program launcher done with C++ and QT5. It accepts programs or programs with arguments as parameters. The program knows how to handle errors and prints an error message for the user if execution fails(meaning program xyz does not exist.
 
 <a href= "http://www.techtimejourney.net/qtcreator-project-compiling-reference/"> See this entry if you need instructions for compiling CRunner-QT. <a>
 ________
