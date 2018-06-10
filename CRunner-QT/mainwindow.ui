@@ -39,7 +39,12 @@ background-color:#504f4f ;}
 /*For QMessagebox*/
  
 QMessageBox {
-background-color: #bababa;}
+    background-color: #333333;
+}
+
+QMessageBox QLabel {
+    color: #aaa;
+}
 </string>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
@@ -70,10 +75,13 @@ background-color:#504f4f ;}
     <property name="styleSheet">
      <string notr="true">QLineEdit#lineEdit{
 color: white;
-background-color:#504f4f ;}
+background-color:#504f4f ;
+border: 1px solid red;
+border-radius: 40px;
+background-color: black;}
 
 QLineEdit#lineEdit:hover{
-background-color:#5f5f5f ;}
+background-color: black ;}
 
 
 

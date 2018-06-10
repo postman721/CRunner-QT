@@ -6,7 +6,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->statusBar->showMessage("Press F1 for info.");
+    ui->statusBar->showMessage("F1 for info.");
+
 }
 
 MainWindow::~MainWindow()
@@ -14,50 +15,44 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::errors()
+{ui->statusBar->showMessage("Error. No such program found.");}
+
+void MainWindow::starting(){
+    ui->statusBar->showMessage("");
+    run_command->waitForStarted(-1);
+    QApplication::quit();
+}
+
 void MainWindow::on_lineEdit_returnPressed()
 {
     QString x; // Using QString since it has utf-8 support --> and because we want info from the Qt ui.
     x=ui->lineEdit->text(); //Get text from the line edit.
 
+
 //Declare the actual command for the run.
 //Using QProcess here. It is friendly to our cause and spawns resouces nicely, unlike the system command.
-    run_command = new QProcess(this);
+   run_command = new QProcess(this);
 
-// We need an int value, because we need to see if we got 0=success or -2=failure.
-    int exitCode= run_command->execute(x);
-    cout << exitCode << endl;
-
-    // Memory address
-    cout << run_command << endl;
-
-//Doing operations based upon exitCode value.
-    if(exitCode == -2){
-      ui->statusBar->showMessage("Error. No such program found.");
-    }
-
-    else if(exitCode == 0){
-        //Delete run_command from the heap and close the ui.
-        delete run_command;
-        this-close();
-    }
+// Start the QProcess.
+   run_command->startDetached(x);
+    run_command->start(x);
+    connect(run_command,SIGNAL(error(QProcess::ProcessError)),this,SLOT(errors()));
+    connect(run_command,SIGNAL(started()),this,SLOT(starting()));
 
 //Security note. Be mindful about what you write. Crunner-QT can also execute terminal commands because QProcess sets
 // shell to equal true. Be careful NEVER to write something like: rm -r some_location, unless you now exactly what you
 // are doing.
 
-};
-
+ }
 
 void MainWindow::keyPressEvent(QKeyEvent *events){
 
     if(events->key()==Qt::Key_F1){
+
         messagebox=new QMessageBox(this);
-
-        // Memory address
-        cout << messagebox << endl;
-
         messagebox->about(this,
-                                "CRunner-QT v.1",
+                                "CRunner-QT v.2",
 
                                 "\n"
 
@@ -95,10 +90,8 @@ void MainWindow::keyPressEvent(QKeyEvent *events){
                                //Return our standard message to the statusbar.
                                ui->statusBar->showMessage("Press F1 for info.");
 
-    }
-
-
-    //Esc event == Quit the program
+          }
+//Esc event == Quit the program
     else if(events->key()==Qt::Key_Escape){
         this->close();    
     }

@@ -2,12 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-#include <iostream>
 #include <QKeyEvent>
 #include <QString>
 #include <QMessageBox>
 #include <QProcess>
+#include <iostream>
 
 using namespace std;
 namespace Ui {
@@ -24,13 +23,13 @@ public:
 
 private slots:
     void on_lineEdit_returnPressed();
+    void errors();
+    void starting();
     void keyPressEvent(QKeyEvent *events);
 
 private:
     Ui::MainWindow *ui;
-
     QMessageBox *messagebox;
-
     QProcess *run_command;
 };
 
