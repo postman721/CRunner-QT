@@ -3,32 +3,22 @@
 # Project created by QtCreator 2017-08-05T06:41:58
 #
 #-------------------------------------------------
+# ---- Qt 6 project configuration ----
 
-QT       += core gui
+# This project uses Qt modules. For a GUI app with QMainWindow,
+# you MUST include the Widgets module.
+QT += widgets
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+# If you previously had this in Qt 5, it's still OK in Qt 6:
+# QT += core gui widgets
 
-TARGET = CRunner-QT
-TEMPLATE = app
+# Tell qmake we want modern C++
+CONFIG += c++11
 
-# The following define makes your compiler emit warnings if you use
-# any feature of Qt which as been marked as deprecated (the exact warnings
-# depend on your compiler). Please consult the documentation of the
-# deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS
+# Your sources / headers (example)
+SOURCES += main.cpp \
+           mainwindow.cpp
 
-# You can also make your code fail to compile if you use deprecated APIs.
-# In order to do so, uncomment the following line.
-# You can also select to disable deprecated APIs only up to a certain version of Qt.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+HEADERS += mainwindow.h
 
-
-SOURCES += \
-        main.cpp \
-        mainwindow.cpp
-
-HEADERS += \
-        mainwindow.h
-
-FORMS += \
-        mainwindow.ui
+FORMS += mainwindow.ui

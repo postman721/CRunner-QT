@@ -16,12 +16,6 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="minimumSize">
-   <size>
-    <width>350</width>
-    <height>66</height>
-   </size>
-  </property>
   <property name="maximumSize">
    <size>
     <width>350</width>
@@ -32,18 +26,167 @@
    <string>CRunner-QT</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QMainWindow#MainWindow{
-background-color:#504f4f ;}
+   <string notr="true">/* =========================================
+   Midnight Blue Theme (Qt QSS)
+   Black + White + Subtle Blue Accent
+   ========================================= */
 
-
-/*For QMessagebox*/
- 
-QMessageBox {
-    background-color: #333333;
+QWidget {
+    background-color: #0E0F13;
+    color: #F4F6FA;
+    font-size: 10.5pt;
+    font-family: &quot;Segoe UI&quot;, &quot;Inter&quot;, &quot;Arial&quot;;
 }
 
-QMessageBox QLabel {
-    color: #aaa;
+/* Main window: deep glossy gradient */
+QMainWindow {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #171922,
+        stop:0.5 #0E0F13,
+        stop:1 #0A0B0F
+    );
+}
+
+/* Status bar */
+QStatusBar {
+    background: #0A0B0F;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 4px;
+}
+QStatusBar::item { border: none; }
+
+/* Panels / frames */
+QFrame {
+    background-color: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+}
+
+/* Labels */
+QLabel {
+    background: transparent;
+    color: #F4F6FA;
+}
+
+/* Line edits (input box) */
+QLineEdit {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgba(255,255,255,0.08),
+        stop:1 rgba(0,0,0,0.35)
+    );
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 8px 12px;
+    color: #FFFFFF;
+    selection-background-color: #3C8DFF;
+    selection-color: #0A0B0F;
+}
+
+QLineEdit:focus {
+    border: 1px solid rgba(60,141,255,0.85);
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgba(255,255,255,0.12),
+        stop:1 rgba(0,0,0,0.45)
+    );
+}
+
+/* Buttons – soft glossy blue accent */
+QPushButton {
+    color: #F4F6FA;
+    border: 1px solid rgba(60,141,255,0.35);
+    border-radius: 14px;
+    padding: 7px 14px;
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgba(255,255,255,0.10),
+        stop:0.4 rgba(60,141,255,0.20),
+        stop:1 rgba(0,0,0,0.35)
+    );
+}
+
+QPushButton:hover {
+    border: 1px solid rgba(60,141,255,0.75);
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgba(255,255,255,0.15),
+        stop:0.4 rgba(60,141,255,0.30),
+        stop:1 rgba(0,0,0,0.45)
+    );
+}
+
+QPushButton:pressed {
+    background: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgba(0,0,0,0.45),
+        stop:1 rgba(60,141,255,0.30)
+    );
+}
+
+QPushButton:disabled {
+    color: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+}
+
+/* Menus */
+QMenuBar {
+    background: #0B0C10;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+QMenuBar::item {
+    padding: 6px 12px;
+    border-radius: 10px;
+}
+
+QMenuBar::item:selected {
+    background: rgba(60,141,255,0.25);
+}
+
+QMenu {
+    background: #0E0F13;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 6px;
+}
+
+QMenu::item {
+    padding: 8px 16px;
+    border-radius: 10px;
+}
+
+QMenu::item:selected {
+    background: rgba(60,141,255,0.30);
+}
+
+/* Scrollbars */
+QScrollBar:vertical {
+    background: transparent;
+    width: 12px;
+    margin: 6px 2px;
+}
+
+QScrollBar::handle:vertical {
+    background: rgba(255,255,255,0.20);
+    border-radius: 6px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: rgba(60,141,255,0.45);
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: transparent;
 }
 </string>
   </property>
@@ -52,62 +195,36 @@ QMessageBox QLabel {
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
-    <string notr="true">QWidget#centralWidget{
-color: white;
-background-color:#504f4f ;}
-</string>
+    <string notr="true"/>
    </property>
-   <widget class="QLineEdit" name="lineEdit">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>9</y>
-      <width>331</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="sizePolicy">
-     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-      <horstretch>0</horstretch>
-      <verstretch>0</verstretch>
-     </sizepolicy>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLineEdit#lineEdit{
-color: white;
-background-color:#504f4f ;
-border: 1px solid red;
-border-radius: 40px;
-background-color: black;}
-
-QLineEdit#lineEdit:hover{
-background-color: black ;}
-
-
-
-</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="placeholderText">
-     <string/>
-    </property>
-    <property name="clearButtonEnabled">
-     <bool>false</bool>
-    </property>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string/>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="styleSheet">
-    <string notr="true">QStatusBar#statusBar{
-color: white;
-background-color:#504f4f ;}
-
-QStatusBar#statusBar:hover{
-background-color:#5f5f5f ;}
-
-</string>
+    <string notr="true"/>
    </property>
   </widget>
  </widget>
